@@ -65,3 +65,5 @@ All content lives in `lib/data.ts`. Edit:
 5. **Projects** — each card has title, description, stack chips, metrics, GitHub + live demo
 6. **Skills** — 8 categories with expert/proficient/familiar visual hierarchy
 7. **Resume** — certifications with updated 2026 years, clean two-column layout
+
+_Last deployment sync trigger: 2026-04-08_
