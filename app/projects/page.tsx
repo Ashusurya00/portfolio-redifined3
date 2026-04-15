@@ -113,20 +113,12 @@ export default function ProjectsPage() {
         <span className="font-mono text-[0.72rem] tracking-[0.12em] uppercase text-[#00d4aa] mb-4 block">
           Featured · {featured.length} projects
         </span>
-        <StaggerContainer className="grid md:grid-cols-3 gap-5">
-          {/* Hero card spans 2 cols */}
-          <div className="md:col-span-2">
-            <StaggerItem>
-              <ProjectCard project={featured[0]} featured />
+        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featured.map(p => (
+            <StaggerItem key={p.slug}>
+              <ProjectCard project={p} featured />
             </StaggerItem>
-          </div>
-          <div className="flex flex-col gap-5">
-            {featured.slice(1).map(p => (
-              <StaggerItem key={p.slug}>
-                <ProjectCard project={p} featured />
-              </StaggerItem>
-            ))}
-          </div>
+          ))}
         </StaggerContainer>
       </section>
 
@@ -136,7 +128,7 @@ export default function ProjectsPage() {
           <span className="font-mono text-[0.72rem] tracking-[0.12em] uppercase text-[#00d4aa] mb-4 block">
             Other Projects
           </span>
-          <StaggerContainer className="grid sm:grid-cols-2 gap-4">
+          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {others.map(p => (
               <StaggerItem key={p.slug}>
                 <ProjectCard project={p} />
