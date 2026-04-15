@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Skills | Ashutosh Suryawanshi</title>
+  <script>(function(){var t=localStorage.getItem('as-theme')||'dark';document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .skills-content{padding:3rem 0 5rem;display:grid;grid-template-columns:230px 1fr;gap:2.5rem;align-items:start}
+    @media(max-width:768px){.skills-content{grid-template-columns:1fr}}
+    .skills-sidebar{position:sticky;top:calc(var(--nav-h) + 1.25rem)}
+    @media(max-width:768px){.skills-sidebar{position:static}}
+    .tab-list{display:flex;flex-direction:column;gap:.25rem}
+    @media(max-width:768px){.tab-list{flex-direction:row;flex-wrap:wrap}}
+    .tab-btn{display:flex;align-items:center;gap:.65rem;padding:.68rem .95rem;border-radius:9px;border:1px solid transparent;background:transparent;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:.855rem;font-weight:500;cursor:pointer;text-align:left;transition:all .2s;width:100%}
+    @media(max-width:768px){.tab-btn{width:auto;flex:none}}
+    .tab-btn:hover{color:var(--text);background:var(--surface-hi)}
+    .tab-btn.active{color:var(--text);background:rgba(0,212,170,.08);border-color:var(--border-hi)}
+    [data-theme="light"] .tab-btn.active{background:rgba(0,151,122,.08)}
+    .tab-icon{font-size:1rem;flex-shrink:0}
+    .skills-panel{display:none}
+    .skills-panel.active{display:block}
+    .panel-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.3rem;color:var(--text);margin-bottom:.35rem;letter-spacing:-.01em}
+    .panel-desc{font-size:.875rem;color:var(--muted);margin-bottom:1.75rem;line-height:1.65}
+    .sg{margin-bottom:1.35rem}
+    .sg:last-child{margin-bottom:0}
+    .sg-label{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;display:block}
+    [data-theme="light"] .sg-label{color:var(--accent)}
+    .pill-grid{display:flex;flex-wrap:wrap;gap:.4rem}
+    .sk{display:inline-flex;align-items:center;padding:.4rem .85rem;border-radius:7px;font-size:.8rem;font-weight:500;border:1px solid var(--border);background:var(--surface);color:var(--text-2);cursor:default;transition:border-color .2s,background .2s,transform .15s}
+    .sk:hover{border-color:var(--border-hi);background:var(--surface-hi);transform:translateY(-2px)}
+    .sk.expert{border-color:rgba(0,212,170,.3);background:rgba(0,212,170,.07);color:var(--accent)}
+    [data-theme="light"] .sk.expert{background:rgba(0,151,122,.08);border-color:rgba(0,151,122,.28);color:var(--accent)}
+    .cert-list{display:flex;flex-direction:column;gap:.85rem}
+    .cert-card{display:flex;align-items:center;gap:.85rem;padding:.95rem 1.15rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);transition:border-color .2s,transform .2s}
+    .cert-card:hover{border-color:var(--border-hi);transform:translateX(4px)}
+    .cert-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;background:rgba(0,212,170,.1)}
+    [data-theme="light"] .cert-icon{background:rgba(0,151,122,.09)}
+    .cert-info h4{font-family:'Syne',sans-serif;font-weight:600;font-size:.88rem;color:var(--text);margin-bottom:1px}
+    .cert-info p{font-size:.76rem;color:var(--muted)}
+    .exp-list{display:flex;flex-direction:column;gap:1.1rem}
+    .exp-card{padding:1.35rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);position:relative;transition:border-color .2s,box-shadow .2s}
+    .exp-card:hover{border-color:var(--border-hi);box-shadow:var(--cshadow-hi)}
+    .exp-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);border-radius:3px 0 0 3px}
+    .exp-role{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:var(--text);margin-bottom:1px}
+    .exp-company{font-size:.8rem;color:var(--accent);margin-bottom:.7rem}
+    .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+    .exp-bullets li{font-size:.83rem;color:var(--muted);padding-left:.9rem;position:relative;line-height:1.6}
+    .exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:.72rem;top:.04em}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Ashutosh<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html" class="active">Skills</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">☀️</span></button>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="skills.html" class="active">Skills</a>
+  <a href="resume.html">Resume</a>
+  <a href="contact.html">Contact</a>
+  <div class="mob-theme-row">
+    <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">☀️</span></button>
+    <span>Toggle theme</span>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+    <header class="page-hero fade-up">
+      <span class="section-label">Capabilities</span>
+      <h1>Skills & <span style="color:var(--accent)">Experience</span></h1>
+      <p>A full picture of my technical skills, tools, internship experience, and professional credentials.</p>
+    </header>
+
+    <div class="skills-content">
+      <aside class="skills-sidebar fade-up">
+        <div class="tab-list">
+          <button class="tab-btn active" onclick="showTab('genai',this)"><span class="tab-icon">🧠</span> Generative AI</button>
+          <button class="tab-btn" onclick="showTab('ml',this)"><span class="tab-icon">⚙️</span> AI / ML</button>
+          <button class="tab-btn" onclick="showTab('data',this)"><span class="tab-icon">📊</span> Data Science</button>
+          <button class="tab-btn" onclick="showTab('cloud',this)"><span class="tab-icon">☁️</span> Cloud & DevOps</button>
+          <button class="tab-btn" onclick="showTab('web',this)"><span class="tab-icon">🌐</span> Web & APIs</button>
+          <button class="tab-btn" onclick="showTab('exp',this)"><span class="tab-icon">💼</span> Experience</button>
+          <button class="tab-btn" onclick="showTab('certs',this)"><span class="tab-icon">🏅</span> Certifications</button>
+        </div>
+      </aside>
+
+      <div class="fade-up delay-2">
+
+        <div class="skills-panel active" id="panel-genai">
+          <h2 class="panel-title">Generative AI</h2>
+          <p class="panel-desc">My core specialisation — building production-grade LLM applications with evaluation, observability, and agentic workflows.</p>
+          <div class="sg"><span class="sg-label">LLM Frameworks — Expert</span><div class="pill-grid"><span class="sk expert">LangChain</span><span class="sk expert">LlamaIndex</span><span class="sk expert">RAG Pipelines</span><span class="sk expert">OpenAI API</span><span class="sk expert">Gemini API</span><span class="sk expert">HuggingFace</span></div></div>
+          <div class="sg"><span class="sg-label">Agentic AI — Expert</span><div class="pill-grid"><span class="sk expert">CrewAI</span><span class="sk expert">LangGraph</span><span class="sk expert">AutoGen</span><span class="sk expert">Multi-Agent Systems</span><span class="sk expert">Tool Calling</span></div></div>
+          <div class="sg"><span class="sg-label">LLMOps & Evaluation</span><div class="pill-grid"><span class="sk expert">LangSmith</span><span class="sk expert">RAGAS</span><span class="sk">MLflow</span><span class="sk">Weights & Biases</span></div></div>
+          <div class="sg"><span class="sg-label">Vector Stores</span><div class="pill-grid"><span class="sk expert">FAISS</span><span class="sk expert">Pinecone</span><span class="sk">ChromaDB</span><span class="sk">Weaviate</span><span class="sk">pgvector</span></div></div>
+          <div class="sg"><span class="sg-label">Fine-Tuning</span><div class="pill-grid"><span class="sk">LoRA</span><span class="sk">PEFT</span><span class="sk">RLHF</span><span class="sk">Prompt Engineering</span></div></div>
+        </div>
+
+        <div class="skills-panel" id="panel-ml">
+          <h2 class="panel-title">AI / Machine Learning</h2>
+          <p class="panel-desc">Core ML fundamentals — model building, evaluation, and deep learning frameworks.</p>
+          <div class="sg"><span class="sg-label">Core — Expert</span><div class="pill-grid"><span class="sk expert">Python</span><span class="sk expert">Scikit-learn</span><span class="sk expert">PyTorch</span><span class="sk expert">TensorFlow</span><span class="sk expert">NLP</span></div></div>
+          <div class="sg"><span class="sg-label">Techniques</span><div class="pill-grid"><span class="sk">Regression</span><span class="sk">Classification</span><span class="sk">Clustering</span><span class="sk">Deep Learning</span><span class="sk">Computer Vision</span><span class="sk">Time Series</span></div></div>
+          <div class="sg"><span class="sg-label">Evaluation</span><div class="pill-grid"><span class="sk">ROC-AUC</span><span class="sk">F1-Score</span><span class="sk">Precision / Recall</span><span class="sk">Confusion Matrix</span></div></div>
+        </div>
+
+        <div class="skills-panel" id="panel-data">
+          <h2 class="panel-title">Data Science & Analytics</h2>
+          <p class="panel-desc">From raw data to actionable insights — analysis, visualisation, and reporting pipelines.</p>
+          <div class="sg"><span class="sg-label">Analysis — Expert</span><div class="pill-grid"><span class="sk expert">Pandas</span><span class="sk expert">NumPy</span><span class="sk expert">EDA</span><span class="sk expert">Feature Engineering</span><span class="sk expert">SQL</span></div></div>
+          <div class="sg"><span class="sg-label">Visualisation</span><div class="pill-grid"><span class="sk">Matplotlib</span><span class="sk">Seaborn</span><span class="sk">Power BI</span><span class="sk">Tableau</span></div></div>
+          <div class="sg"><span class="sg-label">Data Engineering</span><div class="pill-grid"><span class="sk">Kafka</span><span class="sk">Airflow</span><span class="sk">ETL Pipelines</span><span class="sk">DVC</span><span class="sk">MySQL</span><span class="sk">MongoDB</span><span class="sk">PostgreSQL</span></div></div>
+        </div>
+
+        <div class="skills-panel" id="panel-cloud">
+          <h2 class="panel-title">Cloud & DevOps</h2>
+          <p class="panel-desc">Infrastructure for deploying and scaling AI applications in production environments.</p>
+          <div class="sg"><span class="sg-label">Cloud Platforms</span><div class="pill-grid"><span class="sk">AWS</span><span class="sk">GCP</span><span class="sk">Azure</span></div></div>
+          <div class="sg"><span class="sg-label">Containerisation</span><div class="pill-grid"><span class="sk expert">Docker</span><span class="sk">Kubernetes</span><span class="sk">CI/CD</span><span class="sk">GitHub Actions</span></div></div>
+        </div>
+
+        <div class="skills-panel" id="panel-web">
+          <h2 class="panel-title">Web & APIs</h2>
+          <p class="panel-desc">Building interfaces and backend APIs for AI application deployment.</p>
+          <div class="sg"><span class="sg-label">APIs & Deployment — Expert</span><div class="pill-grid"><span class="sk expert">FastAPI</span><span class="sk expert">Streamlit</span><span class="sk expert">Gradio</span></div></div>
+          <div class="sg"><span class="sg-label">Web Technologies</span><div class="pill-grid"><span class="sk">HTML / CSS</span><span class="sk">JavaScript</span><span class="sk">React</span><span class="sk">Node.js</span><span class="sk">REST APIs</span></div></div>
+        </div>
+
+        <div class="skills-panel" id="panel-exp">
+          <h2 class="panel-title">Experience</h2>
+          <p class="panel-desc">Professional internship experience with real clients and production environments.</p>
+          <div class="exp-list">
+            <div class="exp-card">
+              <p class="exp-role">Data Science Intern</p>
+              <p class="exp-company">SaiKet Systems</p>
+              <ul class="exp-bullets">
+                <li>Built 3 ML models achieving up to <strong>85% accuracy</strong> using Scikit-learn</li>
+                <li>Evaluated models using ROC-AUC and F1-score metrics</li>
+                <li>Automated workflows reducing manual effort by <strong>60%</strong></li>
+                <li>Developed Power BI dashboards tracking <strong>5+ KPIs</strong></li>
+              </ul>
+            </div>
+            <div class="exp-card">
+              <p class="exp-role">Data Analyst Intern</p>
+              <p class="exp-company">Codveda</p>
+              <ul class="exp-bullets">
+                <li>Performed EDA on <strong>20K+ records</strong> identifying key business trends</li>
+                <li>Reduced reporting time from <strong>4 hours to 20 minutes</strong> using automation</li>
+                <li>Built analytics dashboards and automated data pipelines</li>
+                <li>Improved data quality improving downstream model performance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-panel" id="panel-certs">
+          <h2 class="panel-title">Certifications</h2>
+          <p class="panel-desc">Verified credentials from recognised platforms and institutions.</p>
+          <div class="cert-list">
+            <div class="cert-card"><div class="cert-icon">🤖</div><div class="cert-info"><h4>Generative AI & LLMs</h4><p>OpenAI Academy · LLM fine-tuning, RAG, prompt engineering</p></div></div>
+            <div class="cert-card"><div class="cert-icon">📊</div><div class="cert-info"><h4>Full Stack Data Science</h4><p>Naresh IT · End-to-end ML pipelines & deployment</p></div></div>
+            <div class="cert-card"><div class="cert-icon">🎓</div><div class="cert-info"><h4>Data Science Mentorship</h4><p>CampusX · Applied data science & ML projects</p></div></div>
+            <div class="cert-card"><div class="cert-icon">💻</div><div class="cert-info"><h4>Full Stack Development</h4><p>Internshala · Web development fundamentals</p></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer><p>Built by <a href="#">Ashutosh Suryawanshi</a> · Hyderabad, India · 2025</p></footer>
+<script src="theme.js"></script>
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.skills-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

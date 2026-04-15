@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Ashutosh Suryawanshi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --bg-gradient: radial-gradient(circle at 50% 50%, #0a0a1a, #0f0c29, #1a1a40);
+            --text-primary: white;
+            --text-secondary: #ccc;
+            --btn-bg: #7b2ff7;
+            --btn-hover: #ff6ec4;
+        }
+
+        body.ocean {
+            --bg-gradient: linear-gradient(135deg, #00c6ff, #0072ff);
+            --text-primary: #fff;
+            --text-secondary: #eee;
+            --btn-bg: #00ffe5;
+            --btn-hover: #00bfa5;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            min-height: 100vh;
+            transition: all 0.8s ease;
+        }
+
+        /* Navbar */
+        nav {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+        }
+
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            gap: 0;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.85);
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            padding: 1rem 0;
+        }
+
+        .nav-links.show {
+            display: flex;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 0.75rem 0;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, color 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-links a:hover {
+            transform: scale(1.05);
+            color: #ffd700;
+            box-shadow: 0 0 8px var(--btn-bg), 0 0 16px var(--btn-hover);
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex !important;
+                flex-direction: row;
+                position: static;
+                background: transparent;
+                width: auto;
+                gap: 1.5rem;
+                padding: 0;
+            }
+        }
+
+        .theme-btn,
+        .menu-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: var(--btn-bg);
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 0 4px var(--btn-bg), 0 0 8px var(--btn-bg);
+            transition: all 0.3s ease;
+        }
+
+        .theme-btn:hover,
+        .menu-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 6px var(--btn-hover), 0 0 12px var(--btn-hover);
+        }
+
+        /* Hero Section */
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 2rem;
+        }
+
+        .hero-text {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: floatIn 1s forwards;
+        }
+
+        .hero-text.delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .hero-text.delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes floatIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Resume Section */
+        .resume-section {
+            max-width: 7xl;
+            margin: 4rem auto;
+            padding: 0 1rem;
+        }
+
+        .resume-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .resume-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .resume-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+        }
+
+        .resume-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .resume-card p,
+        .resume-card li {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+
+            .resume-card p,
+            .resume-card li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="text-2xl font-bold">Ashutosh Suryawanshi</div>
+        <div class="flex items-center gap-3">
+            <div id="nav-links" class="nav-links">
+                <a href="index.html"><i data-feather="home"></i> Home</a>
+                <a href="aboutme.html"><i data-feather="user"></i> About</a>
+                <a href="skills.html"><i data-feather="award"></i> Skills & Exp</a>
+                <a href="projects.html"><i data-feather="folder"></i> Projects</a>
+                <a href="blogs.html"><i data-feather="book"></i> Blog</a>
+                <a href="contact.html"><i data-feather="mail"></i> Contact</a>
+            </div>
+            <button class="menu-btn block md:hidden" onclick="toggleMenu()"><i data-feather="menu"></i></button>
+            <button class="theme-btn hidden sm:flex" onclick="changeTheme()"><i data-feather="moon"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-container">
+        <h1 class="text-4xl md:text-5xl font-bold hero-text delay-1">Resume</h1>
+        <p class="text-base md:text-lg mt-2 hero-text delay-2">Education, Experience, Projects & Certifications</p>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="resume-section">
+        <h2>My Resume</h2>
+
+        <!-- Education -->
+        <div class="resume-card">
+            <h3>Education</h3>
+            <p><strong>B.Tech in Computer Science & Engineering</strong> - XYZ University</p>
+            <p>Graduated: 2024 | CGPA: 7.5</p>
+        </div>
+
+        <!-- Work Experience -->
+        <div class="resume-card">
+            <h3>Work Experience</h3>
+            <p><strong>Data Scientist & AI/ML Engineer</strong> | Company Name | 2024-Present</p>
+            <ul>
+                <li>Built Machine Learning models for fraud detection and predictive analytics.</li>
+                <li>Worked on AI/ML deployment using Flask, Docker, and AWS.</li>
+                <li>Performed data cleaning, EDA, feature engineering, and visualization.</li>
+            </ul>
+        </div>
+
+        <!-- Projects -->
+        <div class="resume-card">
+            <h3>Projects</h3>
+            <ul>
+                <li>Insurance Claim Fraud Detection System (AI/ML & Analytics)</li>
+                <li>E-commerce Website Clone (Full-Stack Development)</li>
+                <li>Spam Email Detection using NLP</li>
+            </ul>
+        </div>
+
+        <!-- Certifications -->
+        <div class="resume-card">
+            <h3>Certifications</h3>
+            <ul>
+                <li>Certified Data Scientist</li>
+                <li>AI & Machine Learning Specialist</li>
+                <li>Full-Stack Development Certificate</li>
+            </ul>
+        </div>
+
+        <!-- Achievements -->
+        <div class="resume-card">
+            <h3>Achievements</h3>
+            <ul>
+                <li>Won 1st place in Hackathon on Fraud Detection</li>
+                <li>Top 10% in Kaggle Competitions</li>
+                <li>Presented AI/ML project at XYZ Conference</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        feather.replace();
+
+        const navLinks = document.getElementById('nav-links');
+
+        function toggleMenu() {
+            navLinks.classList.toggle('show');
+        }
+
+        // Theme toggle
+        let currentTheme = localStorage.getItem('theme') || 'galactic';
+        function applyTheme(theme) {
+            if (theme === 'ocean') document.body.classList.add('ocean');
+            else document.body.classList.remove('ocean');
+            localStorage.setItem('theme', theme);
+        }
+        function changeTheme() {
+            currentTheme = currentTheme === 'galactic' ? 'ocean' : 'galactic';
+            applyTheme(currentTheme);
+        }
+        applyTheme(currentTheme);
+    </script>
+</body>
+
+</html>

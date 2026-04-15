@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Contact | Ashutosh Suryawanshi</title>
+  <script>(function(){var t=localStorage.getItem('as-theme')||'dark';document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:2.25rem;padding:3rem 0 5rem;align-items:start}
+    @media(max-width:900px){.contact-grid{grid-template-columns:1fr}.sidebar-contact{order:-1}}
+    .form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;box-shadow:var(--cshadow)}
+    .form-card h2{font-family:'Syne',sans-serif;font-weight:700;font-size:1.25rem;margin-bottom:.3rem;color:var(--text)}
+    .form-sub{font-size:.85rem;color:var(--muted);margin-bottom:1.6rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+    @media(max-width:520px){.form-row{grid-template-columns:1fr}}
+    .fg{display:flex;flex-direction:column;gap:.38rem;margin-bottom:.9rem}
+    .fg label{font-size:.77rem;font-weight:500;color:var(--muted);letter-spacing:.02em}
+    .fg input,.fg textarea,.fg select{
+      background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;
+      padding:.65rem .9rem;color:var(--text);font-family:'DM Sans',sans-serif;
+      font-size:.875rem;width:100%;outline:none;transition:border-color .2s,background .2s;resize:none;
+    }
+    [data-theme="light"] .fg input,[data-theme="light"] .fg textarea,[data-theme="light"] .fg select{background:rgba(0,0,0,.03)}
+    .fg input::placeholder,.fg textarea::placeholder{color:var(--muted);opacity:.55}
+    .fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--border-hi);background:rgba(0,212,170,.03)}
+    [data-theme="light"] .fg input:focus,[data-theme="light"] .fg textarea:focus{background:rgba(0,151,122,.04)}
+    .fg textarea{min-height:120px}
+    .submit-btn{width:100%;justify-content:center;padding:.8rem;font-size:.9rem;margin-top:.25rem}
+    .form-success{display:none;text-align:center;padding:1.5rem;border-radius:10px;background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.2);color:#22c55e;font-size:.88rem;margin-top:1rem}
+
+    .sidebar-contact{display:flex;flex-direction:column;gap:1.1rem}
+    .info-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.35rem;box-shadow:var(--cshadow)}
+    .info-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:var(--text);margin-bottom:.9rem}
+    .ci{display:flex;align-items:center;gap:.7rem;padding:.55rem 0;border-bottom:1px solid var(--border)}
+    .ci:last-child{border-bottom:none;padding-bottom:0}
+    .ci-icon{width:30px;height:30px;border-radius:7px;background:rgba(0,212,170,.1);display:flex;align-items:center;justify-content:center;font-size:.82rem;flex-shrink:0}
+    [data-theme="light"] .ci-icon{background:rgba(0,151,122,.09)}
+    .ci-label{font-size:.68rem;color:var(--muted);margin-bottom:1px}
+    .ci-val{font-size:.82rem;color:var(--text);font-weight:500;text-decoration:none;transition:color .2s}
+    a.ci-val:hover{color:var(--accent)}
+
+    .social-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+    .social-link{display:flex;align-items:center;gap:.55rem;padding:.68rem .85rem;border:1px solid var(--border);border-radius:9px;background:var(--surface);text-decoration:none;transition:border-color .2s,transform .2s,box-shadow .2s}
+    .social-link:hover{border-color:var(--border-hi);transform:translateY(-2px);box-shadow:var(--cshadow-hi)}
+    .s-icon{font-size:1rem;flex-shrink:0}
+    .s-name{font-size:.78rem;font-weight:600;color:var(--text)}
+    .s-handle{font-size:.66rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+    .avail-card{display:flex;align-items:center;gap:.85rem;background:rgba(0,212,170,.05);border:1px solid rgba(0,212,170,.2);border-radius:var(--radius);padding:1.1rem 1.3rem}
+    [data-theme="light"] .avail-card{background:rgba(0,151,122,.05);border-color:rgba(0,151,122,.2)}
+    .avail-dot{width:9px;height:9px;background:#22c55e;border-radius:50%;box-shadow:0 0 7px #22c55e;animation:pulse 2s infinite;flex-shrink:0}
+    .avail-text h4{font-family:'Syne',sans-serif;font-size:.875rem;font-weight:600;color:var(--text);margin-bottom:1px}
+    .avail-text p{font-size:.76rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Ashutosh<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">☀️</span></button>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="skills.html">Skills</a>
+  <a href="resume.html">Resume</a>
+  <a href="contact.html" class="active">Contact</a>
+  <div class="mob-theme-row">
+    <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">☀️</span></button>
+    <span>Toggle theme</span>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+    <header class="page-hero fade-up">
+      <span class="section-label">Get in touch</span>
+      <h1>Let's work <span style="color:var(--accent)">together.</span></h1>
+      <p>Open to full-time AI/ML Engineer roles, freelance projects, and exciting collaborations.</p>
+    </header>
+
+    <div class="contact-grid">
+      <div class="fade-up delay-1">
+        <div class="form-card">
+          <h2>Send a message</h2>
+          <p class="form-sub">I'll get back to you within 24 hours.</p>
+          <form id="contact-form">
+            <div class="form-row">
+              <div class="fg"><label>First name</label><input type="text" placeholder="John" required/></div>
+              <div class="fg"><label>Last name</label><input type="text" placeholder="Doe" required/></div>
+            </div>
+            <div class="fg"><label>Email address</label><input type="email" placeholder="john@company.com" required/></div>
+            <div class="fg">
+              <label>Regarding</label>
+              <select>
+                <option value="">Select a topic…</option>
+                <option>Full-time job opportunity</option>
+                <option>Freelance / contract project</option>
+                <option>Collaboration</option>
+                <option>General enquiry</option>
+              </select>
+            </div>
+            <div class="fg"><label>Message</label><textarea placeholder="Tell me about the role, project, or what you'd like to discuss…" required></textarea></div>
+            <button type="submit" class="btn btn-primary submit-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Message
+            </button>
+          </form>
+          <div class="form-success" id="form-success">✓ Message sent! I'll get back to you within 24 hours.</div>
+        </div>
+      </div>
+
+      <aside class="sidebar-contact fade-up delay-2">
+        <div class="avail-card">
+          <div class="avail-dot"></div>
+          <div class="avail-text"><h4>Open to opportunities</h4><p>Full-time AI / ML Engineer roles in India</p></div>
+        </div>
+
+        <div class="info-card">
+          <h3>Contact details</h3>
+          <div class="ci"><div class="ci-icon">📧</div><div><div class="ci-label">Email</div><a href="mailto:ashusurya00@gmail.com" class="ci-val">ashusurya00@gmail.com</a></div></div>
+          <div class="ci"><div class="ci-icon">📍</div><div><div class="ci-label">Location</div><span class="ci-val">Hyderabad, India</span></div></div>
+          <div class="ci"><div class="ci-icon">📞</div><div><div class="ci-label">Phone</div><a href="tel:+917385645001" class="ci-val">+91 7385645001</a></div></div>
+        </div>
+
+        <div class="info-card">
+          <h3>Social & professional</h3>
+          <div class="social-grid">
+            <a href="https://www.linkedin.com/in/ashutosh-suryawanshi-26aa46378/" target="_blank" class="social-link"><span class="s-icon">💼</span><div><div class="s-name">LinkedIn</div><div class="s-handle">ashutosh-s</div></div></a>
+            <a href="https://github.com/Ashusurya00" target="_blank" class="social-link"><span class="s-icon">⚡</span><div><div class="s-name">GitHub</div><div class="s-handle">Ashusurya00</div></div></a>
+            <a href="https://twitter.com" target="_blank" class="social-link"><span class="s-icon">🐦</span><div><div class="s-name">Twitter</div><div class="s-handle">@ashusurya</div></div></a>
+            <a href="https://discord.com" target="_blank" class="social-link"><span class="s-icon">💬</span><div><div class="s-name">Discord</div><div class="s-handle">ashusurya00</div></div></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer><p>Built by <a href="#">Ashutosh Suryawanshi</a> · Hyderabad, India · 2025</p></footer>
+<script src="theme.js"></script>
+<script>
+document.getElementById('contact-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  this.style.display='none';
+  document.getElementById('form-success').style.display='block';
+});
+</script>
+</body>
+</html>

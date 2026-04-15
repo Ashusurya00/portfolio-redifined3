@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Resume | Ashutosh Suryawanshi</title>
+  <script>(function(){var t=localStorage.getItem('as-theme')||'dark';document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .resume-layout{display:grid;grid-template-columns:260px 1fr;gap:2.5rem;padding:3rem 0 5rem;align-items:start}
+    @media(max-width:860px){.resume-layout{grid-template-columns:1fr}}
+
+    /* ── SIDEBAR ── */
+    .res-sidebar{position:sticky;top:calc(var(--nav-h) + 1.25rem)}
+    @media(max-width:860px){.res-sidebar{position:static}}
+    .res-avatar{width:100%;aspect-ratio:1;border-radius:var(--radius);object-fit:cover;border:1px solid var(--border);margin-bottom:1.25rem;display:block}
+    .res-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:var(--text);line-height:1.2;margin-bottom:.25rem}
+    .res-title{font-size:.82rem;color:var(--accent);font-weight:500;margin-bottom:1rem}
+    .res-meta{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.25rem}
+    .res-meta-item{display:flex;align-items:center;gap:.55rem;font-size:.8rem;color:var(--muted)}
+    .res-meta-item em{font-style:normal;font-size:.9rem}
+    .res-meta-item a{color:var(--muted);text-decoration:none;transition:color .2s}
+    .res-meta-item a:hover{color:var(--accent)}
+    .dl-btn{width:100%;justify-content:center;margin-bottom:.75rem}
+    .gh-btn{width:100%;justify-content:center}
+    .sidebar-sep{border:none;border-top:1px solid var(--border);margin:1.25rem 0}
+    .sidebar-section{margin-bottom:1.25rem}
+    .sidebar-label{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;display:block}
+    .avail-chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;color:#22c55e;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:20px;padding:.28rem .75rem}
+    .avail-chip::before{content:'';width:6px;height:6px;background:#22c55e;border-radius:50%;animation:pulse 2s infinite;box-shadow:0 0 5px #22c55e;flex-shrink:0}
+
+    /* ── MAIN RESUME ── */
+    .res-main{display:flex;flex-direction:column;gap:2.25rem}
+    .res-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--cshadow)}
+    .res-block-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--text);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+    .res-block-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+    /* ── SUMMARY ── */
+    .res-summary{font-size:.9rem;color:var(--text-2);line-height:1.78}
+    .res-summary strong{color:var(--accent);font-weight:600}
+
+    /* ── SKILLS PILLS ── */
+    .skill-row{margin-bottom:.9rem}
+    .skill-row:last-child{margin-bottom:0}
+    .skill-row-label{font-size:.72rem;font-family:'DM Mono',monospace;color:var(--muted);margin-bottom:.4rem;display:block}
+    .pill-wrap{display:flex;flex-wrap:wrap;gap:.35rem}
+    .spill{display:inline-block;font-size:.75rem;padding:.25rem .65rem;border-radius:6px;background:var(--surface-hi);color:var(--text-2);border:1px solid var(--border);font-family:'DM Mono',monospace;transition:border-color .2s,color .2s}
+    .spill:hover{border-color:var(--border-hi);color:var(--accent)}
+    .spill.expert{background:rgba(0,212,170,.08);border-color:rgba(0,212,170,.22);color:var(--accent)}
+    [data-theme="light"] .spill.expert{background:rgba(0,151,122,.08);border-color:rgba(0,151,122,.25)}
+
+    /* ── EXPERIENCE / EDUCATION ── */
+    .exp-item{padding-left:1rem;border-left:2px solid var(--border-hi);margin-bottom:1.25rem;transition:border-color .2s}
+    .exp-item:last-child{margin-bottom:0}
+    .exp-item:hover{border-left-color:var(--accent)}
+    .exp-role{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:var(--text)}
+    .exp-co{font-size:.8rem;color:var(--accent);margin:.1rem 0 .6rem}
+    .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+    .exp-bullets li{font-size:.83rem;color:var(--muted);line-height:1.6;padding-left:.9rem;position:relative}
+    .exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:.72rem;top:.04em}
+
+    /* ── PROJECTS TABLE ── */
+    .proj-item{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--border)}
+    .proj-item:last-child{border-bottom:none;padding-bottom:0}
+    .proj-info h4{font-family:'Syne',sans-serif;font-weight:600;font-size:.92rem;color:var(--text);margin-bottom:.2rem}
+    .proj-info p{font-size:.8rem;color:var(--muted);line-height:1.6}
+    .proj-links{display:flex;gap:.4rem;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+
+    /* ── CERTS ── */
+    .cert-item{display:flex;align-items:center;gap:.75rem;padding:.65rem 0;border-bottom:1px solid var(--border)}
+    .cert-item:last-child{border-bottom:none}
+    .cert-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
+    .cert-item span{font-size:.85rem;color:var(--text-2)}
+    .cert-item em{font-size:.75rem;color:var(--muted);font-style:normal;margin-left:auto;white-space:nowrap}
+
+    /* ── ACHIEVEMENTS ── */
+    .ach-item{display:flex;align-items:flex-start;gap:.7rem;padding:.6rem 0;border-bottom:1px solid var(--border)}
+    .ach-item:last-child{border-bottom:none}
+    .ach-icon{font-size:1.1rem;flex-shrink:0;margin-top:.05rem}
+    .ach-item span{font-size:.85rem;color:var(--text-2);line-height:1.55}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Ashutosh<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="resume.html" class="active">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">☀️</span></button>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="skills.html">Skills</a>
+  <a href="resume.html" class="active">Resume</a>
+  <a href="contact.html">Contact</a>
+  <div class="mob-theme-row">
+    <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">☀️</span></button>
+    <span>Toggle theme</span>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+
+    <header class="page-hero fade-up">
+      <span class="section-label">Curriculum Vitae</span>
+      <h1>Resume <span style="color:var(--accent)">— 2025</span></h1>
+      <p>AI Engineer & Data Scientist · Fresher · Open to full-time roles across India</p>
+    </header>
+
+    <div class="resume-layout">
+
+      <!-- ── SIDEBAR ── -->
+      <aside class="res-sidebar fade-up">
+        <img src="portfolio.jpg" alt="Ashutosh" class="res-avatar"/>
+        <p class="res-name">Ashutosh Suryawanshi</p>
+        <p class="res-title">AI Engineer · Data Scientist · GenAI Builder</p>
+
+        <div class="res-meta">
+          <div class="res-meta-item"><em>📍</em> Hyderabad, India</div>
+          <div class="res-meta-item"><em>📧</em> <a href="mailto:ashusurya00@gmail.com">ashusurya00@gmail.com</a></div>
+          <div class="res-meta-item"><em>📞</em> <a href="tel:+917385645001">+91 7385645001</a></div>
+          <div class="res-meta-item"><em>💼</em> <a href="https://linkedin.com/in/ashutosh-suryawanshi-26aa46378" target="_blank">LinkedIn</a></div>
+          <div class="res-meta-item"><em>⚡</em> <a href="https://github.com/Ashusurya00" target="_blank">GitHub</a></div>
+        </div>
+
+        <a href="Ashutosh_Final_98.pdf" download class="btn btn-primary dl-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+        <a href="https://github.com/Ashusurya00" target="_blank" class="btn btn-ghost gh-btn">View GitHub ↗</a>
+
+        <hr class="sidebar-sep"/>
+
+        <div class="sidebar-section">
+          <span class="sidebar-label">Availability</span>
+          <div class="avail-chip">Open to work</div>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-label">Education</span>
+          <p style="font-size:.82rem;color:var(--text-2);line-height:1.55"><strong style="color:var(--text);font-family:'Syne',sans-serif">B.Tech CSE</strong><br>MRIIT, Hyderabad<br><span style="color:var(--muted)">2021 – 2025</span></p>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-label">Languages</span>
+          <p style="font-size:.82rem;color:var(--muted);line-height:1.7">English (Professional)<br>Hindi (Native)<br>Telugu (Conversational)</p>
+        </div>
+      </aside>
+
+      <!-- ── MAIN BODY ── -->
+      <div class="res-main fade-up delay-2">
+
+        <!-- SUMMARY -->
+        <div class="res-block">
+          <h3 class="res-block-title">Professional Summary</h3>
+          <p class="res-summary">
+            Fresher <strong>AI Engineer & Data Scientist</strong> specialising in <strong>Generative AI</strong>, RAG pipelines, and Agentic AI systems. Built production-ready AI applications including a RAG chatbot achieving <strong>90%+ retrieval accuracy</strong> (RAGAS-evaluated) and a 5-agent automation system reducing processing time by <strong>65%</strong>. Experienced in LangChain, LlamaIndex, LangSmith observability, and full MLOps deployment. Seeking to contribute to high-impact AI teams building production LLM applications.
+          </p>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="res-block">
+          <h3 class="res-block-title">Technical Skills</h3>
+          <div class="skill-row">
+            <span class="skill-row-label">Generative AI · Expert</span>
+            <div class="pill-wrap">
+              <span class="spill expert">LangChain</span><span class="spill expert">LlamaIndex</span>
+              <span class="spill expert">RAG</span><span class="spill expert">FAISS</span>
+              <span class="spill expert">Pinecone</span><span class="spill expert">OpenAI API</span>
+              <span class="spill expert">Gemini API</span><span class="spill expert">HuggingFace</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-row-label">Agentic AI · Expert</span>
+            <div class="pill-wrap">
+              <span class="spill expert">CrewAI</span><span class="spill expert">LangGraph</span>
+              <span class="spill expert">AutoGen</span><span class="spill expert">Multi-Agent Systems</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-row-label">LLMOps & Evaluation</span>
+            <div class="pill-wrap">
+              <span class="spill expert">LangSmith</span><span class="spill expert">RAGAS</span>
+              <span class="spill">MLflow</span><span class="spill">Weights & Biases</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-row-label">AI / ML</span>
+            <div class="pill-wrap">
+              <span class="spill expert">Python</span><span class="spill expert">PyTorch</span>
+              <span class="spill expert">Scikit-learn</span><span class="spill">TensorFlow</span>
+              <span class="spill">NLP</span><span class="spill">Computer Vision</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-row-label">Fine-Tuning</span>
+            <div class="pill-wrap">
+              <span class="spill">LoRA</span><span class="spill">PEFT</span><span class="spill">RLHF</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-row-label">Cloud & DevOps</span>
+            <div class="pill-wrap">
+              <span class="spill">AWS</span><span class="spill">GCP</span><span class="spill">Azure</span>
+              <span class="spill expert">Docker</span><span class="spill">Kubernetes</span><span class="spill">CI/CD</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-row-label">APIs & Deployment</span>
+            <div class="pill-wrap">
+              <span class="spill expert">FastAPI</span><span class="spill expert">Streamlit</span>
+              <span class="spill">Gradio</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-row-label">Data & Databases</span>
+            <div class="pill-wrap">
+              <span class="spill">Pandas</span><span class="spill">NumPy</span><span class="spill">SQL</span>
+              <span class="spill">PostgreSQL</span><span class="spill">MongoDB</span><span class="spill">ChromaDB</span>
+              <span class="spill">Kafka</span><span class="spill">Airflow</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div class="res-block">
+          <h3 class="res-block-title">Internship Experience</h3>
+          <div class="exp-item">
+            <p class="exp-role">Data Science Intern</p>
+            <p class="exp-co">SaiKet Systems</p>
+            <ul class="exp-bullets">
+              <li>Built 3 ML models achieving up to <strong>85% accuracy</strong> using Scikit-learn</li>
+              <li>Evaluated models using ROC-AUC and F1-score metrics</li>
+              <li>Automated reporting workflows reducing manual effort by <strong>60%</strong></li>
+              <li>Developed Power BI dashboards tracking <strong>5+ KPIs</strong> for business insights</li>
+            </ul>
+          </div>
+          <div class="exp-item">
+            <p class="exp-role">Data Analyst Intern</p>
+            <p class="exp-co">Codveda</p>
+            <ul class="exp-bullets">
+              <li>Performed EDA on <strong>20K+ records</strong> identifying key business trends</li>
+              <li>Reduced reporting time from <strong>4 hours to 20 minutes</strong> via automation</li>
+              <li>Built analytics dashboards and automated data pipelines</li>
+              <li>Improved downstream ML model performance through data quality improvements</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="res-block">
+          <h3 class="res-block-title">Key Projects</h3>
+          <div class="proj-item">
+            <div class="proj-info">
+              <h4>AI Banking RAG Chatbot</h4>
+              <p>RAG pipeline with FAISS + Gemini API · 90%+ retrieval accuracy · RAGAS evaluated · LangSmith traced</p>
+            </div>
+            <div class="proj-links">
+              <a href="https://generative-ai-banking-chatbot-gbjdmmgwpwwel3rerqsgru.streamlit.app/" target="_blank" class="btn btn-primary btn-sm">Demo</a>
+              <a href="https://github.com/Ashusurya00/Generative-ai-banking-chatbot" target="_blank" class="btn btn-ghost btn-sm">GitHub</a>
+            </div>
+          </div>
+          <div class="proj-item">
+            <div class="proj-info">
+              <h4>AI Resume Analyzer & Job Matcher</h4>
+              <p>NLP + LLM scoring · Skill gap analysis · PDF report export · Streamlit dashboard</p>
+            </div>
+            <div class="proj-links">
+              <a href="https://ai-resume-analyzer-95bnujjzjadh3m46hkhtar.streamlit.app/" target="_blank" class="btn btn-primary btn-sm">Demo</a>
+              <a href="https://github.com/Ashusurya00/AI-resume-analyzer" target="_blank" class="btn btn-ghost btn-sm">GitHub</a>
+            </div>
+          </div>
+          <div class="proj-item">
+            <div class="proj-info">
+              <h4>Multi-Agent AI System</h4>
+              <p>5-agent CrewAI + LangGraph workflow · 65% faster processing · Memory + tool-calling</p>
+            </div>
+            <div class="proj-links">
+              <a href="https://multi-agent-system-4hey2jhs6vzkewdumxu3uy.streamlit.app/" target="_blank" class="btn btn-primary btn-sm">Demo</a>
+              <a href="https://github.com/Ashusurya00/Multi-Agent-System" target="_blank" class="btn btn-ghost btn-sm">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CERTIFICATIONS -->
+        <div class="res-block">
+          <h3 class="res-block-title">Certifications</h3>
+          <div class="cert-item"><span class="cert-dot"></span><span>Generative AI & LLMs — OpenAI Academy</span><em>2024</em></div>
+          <div class="cert-item"><span class="cert-dot"></span><span>Full Stack Data Science — Naresh IT</span><em>2024</em></div>
+          <div class="cert-item"><span class="cert-dot"></span><span>Data Science Mentorship — CampusX</span><em>2024</em></div>
+          <div class="cert-item"><span class="cert-dot"></span><span>Full Stack Development — Internshala</span><em>2023</em></div>
+        </div>
+
+        <!-- ACHIEVEMENTS -->
+        <div class="res-block">
+          <h3 class="res-block-title">Achievements</h3>
+          <div class="ach-item"><span class="ach-icon">🏆</span><span>Winner — Code Debugging Contest, College Tech Fest 2024 (100+ participants)</span></div>
+          <div class="ach-item"><span class="ach-icon">🥉</span><span>Top 3 — AI Hackathon, Inter-college Hackathon 2024 (50+ teams)</span></div>
+          <div class="ach-item"><span class="ach-icon">🤖</span><span>Recognised for AI automation project innovation</span></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer><p>Built by <a href="#">Ashutosh Suryawanshi</a> · Hyderabad, India · 2025 · <a href="mailto:ashusurya00@gmail.com">ashusurya00@gmail.com</a></p></footer>
+<script src="theme.js"></script>
+</body>
+</html>

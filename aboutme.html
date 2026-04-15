@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Ashutosh Suryawanshi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: radial-gradient(circle at 50% 50%, #0a0a1a, #0f0c29, #1a1a40);
+            --text-primary: white;
+            --text-secondary: #ccc;
+            --btn-bg: #7b2ff7;
+            --btn-hover: #ff6ec4;
+        }
+
+        body.ocean {
+            --bg-gradient: linear-gradient(135deg, #00c6ff, #0072ff);
+            --btn-bg: #00ffe5;
+            --btn-hover: #00bfa5;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            min-height: 100vh;
+            transition: all 0.8s ease;
+        }
+
+        /* Navbar */
+        nav {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+        }
+
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.85);
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 100%;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links.show {
+            display: flex;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.25rem;
+            transition: transform 0.3s, color 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-links a:hover {
+            transform: scale(1.1);
+            color: #ffd700;
+            box-shadow: 0 0 8px var(--btn-bg), 0 0 16px var(--btn-hover);
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex !important;
+                position: static;
+                flex-direction: row;
+                gap: 1.5rem;
+                background: transparent;
+                width: auto;
+                padding: 0;
+            }
+        }
+
+        /* Buttons */
+        .theme-btn,
+        .menu-btn,
+        .hire-btn,
+        .about-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: var(--btn-bg);
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-btn:hover,
+        .menu-btn:hover,
+        .hire-btn:hover,
+        .about-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 6px var(--btn-hover), 0 0 12px var(--btn-hover);
+        }
+
+        /* Hero Section */
+        .hero-container {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 1rem 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-container {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+                padding: 6rem 4rem 2rem;
+            }
+        }
+
+        .hero-left {
+            max-width: 600px;
+        }
+
+        .hero-left p {
+            margin-top: 1rem;
+            color: #ccc;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-right img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid #7b2ff7;
+            object-fit: cover;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        @media (min-width: 640px) {
+            .hero-right img {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        .hero-right img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 36px rgba(123, 47, 247, 0.6);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin: 2rem 1rem;
+            transition: transform 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="text-2xl font-bold">Ashutosh Suryawanshi</div>
+        <div class="flex items-center gap-3">
+            <div id="nav-links" class="nav-links">
+                <a href="index.html"><i data-feather="home"></i> Home</a>
+                <a href="aboutme.html"><i data-feather="user"></i> About</a>
+                <a href="projects.html"><i data-feather="folder"></i> Projects</a>
+                <a href="blogs.html"><i data-feather="book"></i> Blog</a>
+                <a href="contact.html"><i data-feather="mail"></i> Contact</a>
+                <a href="skills.html"><i data-feather="award"></i> Skills & Exp</a>
+                <a href="resume.html"><i data-feather="file-text"></i> Resume</a>
+            </div>
+            <button class="menu-btn block md:hidden" onclick="toggleMenu()"><i data-feather="menu"></i></button>
+            <button class="theme-btn hidden sm:flex" onclick="changeTheme()"><i data-feather="moon"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-container">
+        <div class="hero-left">
+            <h1 class="text-4xl md:text-5xl font-bold">Hi, I'm Ashutosh</h1>
+            <p class="text-xl md:text-2xl mt-2">AI/ML Engineer & Data Scientist</p>
+            <p>I am a passionate Data Scientist and AI/ML Engineer with a background in Computer Science. I love
+                turning complex data into actionable insights, building intelligent systems, and exploring the latest
+                technologies.</p>
+            <div class="hero-buttons">
+                <a href="contact.html" class="hire-btn">Hire Me</a>
+                <a href="aboutme.html" class="about-btn">About</a>
+            </div>
+        </div>
+        <div class="hero-right mt-6 md:mt-0">
+            <img src="portfolio.jpg" alt="Ashutosh Suryawanshi">
+        </div>
+    </section>
+
+    <!-- About Details -->
+    <div class="glass-card">
+        <h2 class="text-3xl font-bold mb-4">Education</h2>
+        <p>B.Tech in Computer Science and Engineering</p>
+
+        <h2 class="text-3xl font-bold mt-6 mb-4">Professional Experience</h2>
+        <p>1 year of experience working on AI/ML, Data Science, and Full-Stack Development projects.</p>
+
+        <h2 class="text-3xl font-bold mt-6 mb-4">Hobbies & Interests</h2>
+        <p>Coding, exploring new technologies, reading, problem-solving, AI research, and building innovative
+            projects.</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="theme.js"></script>
+    <script>
+        feather.replace();
+        const navLinks = document.getElementById("nav-links");
+        function toggleMenu() {
+            navLinks.classList.toggle("show");
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Ashutosh Suryawanshi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --bg-gradient: radial-gradient(circle at 50% 50%, #0a0a1a, #0f0c29, #1a1a40);
+            --text-primary: white;
+            --text-secondary: #ccc;
+            --btn-bg: #7b2ff7;
+            --btn-hover: #ff6ec4;
+        }
+
+        body.ocean {
+            --bg-gradient: linear-gradient(135deg, #00c6ff, #0072ff);
+            --text-primary: #fff;
+            --text-secondary: #eee;
+            --btn-bg: #00ffe5;
+            --btn-hover: #00bfa5;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            min-height: 100vh;
+            transition: all 0.8s ease;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.75rem;
+            transition: transform 0.3s, color 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-links a:hover {
+            transform: scale(1.1);
+            color: #ffd700;
+            box-shadow: 0 0 8px var(--btn-bg), 0 0 16px var(--btn-hover);
+        }
+
+        /* THEME BUTTON */
+        .theme-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: var(--btn-bg);
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 0 4px var(--btn-bg), 0 0 8px var(--btn-bg);
+            transition: all 0.3s ease;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 6px var(--btn-hover), 0 0 12px var(--btn-hover);
+        }
+
+        /* HERO SECTION */
+        .hero-container {
+            padding: 6rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 2rem;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        input,
+        textarea {
+            border-radius: 12px;
+            border: 2px solid #555;
+            padding: 12px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            color: #fff;
+            transition: border 0.3s, background 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--btn-bg);
+            background: rgba(0, 0, 0, 0.4);
+            outline: none;
+        }
+
+        .btn-glow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            font-weight: 600;
+            background: var(--btn-bg);
+            color: #000;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-glow:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 12px var(--btn-hover), 0 0 24px var(--btn-hover);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+            font-size: 2rem;
+        }
+
+        .social-icons a {
+            color: var(--text-primary);
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.3);
+            color: #ffd700;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="text-2xl font-bold">Ashutosh Suryawanshi</div>
+        <div class="flex items-center gap-4">
+            <div id="nav-links" class="nav-links">
+                <a href="index.html"><i data-feather="home"></i> Home</a>
+                <a href="aboutme.html"><i data-feather="user"></i> About</a>
+                <a href="projects.html"><i data-feather="folder"></i> Projects</a>
+                <a href="blogs.html"><i data-feather="book"></i> Blog</a>
+                <a href="skills.html"><i data-feather="award"></i> Skills & Exp</a>
+                <a href="resume.html"><i data-feather="file-text"></i> Resume</a>
+                <a href="contact.html"><i data-feather="mail"></i> Contact</a>
+            </div>
+            <button class="menu-btn" onclick="toggleMenu()"><i data-feather="menu"></i></button>
+            <button class="theme-btn" onclick="changeTheme()"><i data-feather="moon"></i></button>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="hero-container">
+        <h1 class="text-5xl font-bold hero-text delay-1">Let’s Work Together!</h1>
+        <p class="text-lg text-gray-300 mt-4 hero-text delay-2">Feel free to reach out for projects, collaborations or
+            just a friendly hello!</p>
+
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 mt-10">
+            <!-- Contact Form -->
+            <div class="contact-card hero-text delay-2">
+                <h2 class="text-3xl font-bold mb-6">Send Me a Message</h2>
+                <form class="grid gap-6">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn-glow"><i class="fas fa-paper-plane"></i> Send Message</button>
+                </form>
+            </div>
+
+            <!-- Social Info -->
+            <div class="contact-card hero-text delay-3 flex flex-col items-center justify-center gap-6">
+                <h2 class="text-3xl font-bold mb-4">Connect With Me</h2>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/ashutosh-suryawanshi-26aa46378/" target="_blank"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Ashusurya00" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://discord.com" target="_blank"><i class="fab fa-discord"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="index.html" target="_blank"><i class="fas fa-globe"></i></a>
+                </div>
+                <p class="mt-4 text-center text-gray-400">I’m always open to exciting opportunities and collaborations.
+                    Let’s create something amazing together!</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        feather.replace();
+
+        const navLinks = document.getElementById('nav-links');
+        function toggleMenu() {
+            if (navLinks.style.display === 'none') {
+                navLinks.style.display = 'flex';
+            } else {
+                navLinks.style.display = 'none';
+            }
+        }
+
+        let currentTheme = localStorage.getItem('theme') || 'galactic';
+        function applyTheme(theme) {
+            if (theme === 'ocean') {
+                document.body.classList.add('ocean');
+            } else {
+                document.body.classList.remove('ocean');
+            }
+            localStorage.setItem('theme', theme);
+        }
+        function changeTheme() {
+            currentTheme = currentTheme === 'galactic' ? 'ocean' : 'galactic';
+            applyTheme(currentTheme);
+        }
+        applyTheme(currentTheme);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Projects | Ashutosh Suryawanshi</title>
+  <script>(function(){var t=localStorage.getItem('as-theme')||'dark';document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── FEATURED PINNED SECTION ── */
+    .pin-section{padding:3rem 0 1rem}
+    .pin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.25rem;margin-top:1.5rem}
+
+    /* ── FEATURED CARD ── */
+    .feat-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--cshadow);transition:border-color .25s,transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
+    .feat-card:hover{border-color:var(--border-hi);transform:translateY(-6px);box-shadow:var(--cshadow-hi)}
+    .feat-card.hero-card{grid-column:span 2}
+    @media(max-width:768px){.feat-card.hero-card{grid-column:span 1}}
+
+    .card-top{padding:1.4rem 1.5rem 0;display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem}
+    .card-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+    .card-badges{display:flex;gap:.4rem;flex-wrap:wrap}
+
+    .live-badge{display:inline-flex;align-items:center;gap:.3rem;font-size:.67rem;font-family:'DM Mono',monospace;color:#22c55e;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:20px;padding:.2rem .62rem}
+    .live-badge::before{content:'';width:5px;height:5px;background:#22c55e;border-radius:50%;box-shadow:0 0 5px #22c55e;animation:pulse 2s infinite}
+    .feat-badge{display:inline-flex;align-items:center;font-size:.67rem;font-family:'DM Mono',monospace;color:var(--accent);background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.25);border-radius:20px;padding:.2rem .62rem}
+
+    .card-body{padding:1.1rem 1.5rem;flex:1}
+    .card-body h2{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--text);margin-bottom:.4rem;letter-spacing:-.01em}
+    .card-body p{font-size:.855rem;color:var(--muted);line-height:1.7;margin-bottom:.9rem}
+
+    .stack-row{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.85rem}
+    .stack-chip{font-family:'DM Mono',monospace;font-size:.66rem;padding:.2rem .55rem;border-radius:5px;background:var(--surface-hi);color:var(--muted);border:1px solid var(--border)}
+
+    .metrics-row{display:flex;gap:.85rem;flex-wrap:wrap;padding:.7rem .9rem;background:rgba(0,212,170,.04);border:1px solid rgba(0,212,170,.11);border-radius:8px;margin-bottom:.85rem}
+    [data-theme="light"] .metrics-row{background:rgba(0,151,122,.04);border-color:rgba(0,151,122,.15)}
+    .metric{display:flex;flex-direction:column}
+    .metric .mv{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:var(--accent);line-height:1}
+    .metric .mk{font-size:.66rem;color:var(--muted);margin-top:2px}
+
+    .card-footer{padding:.9rem 1.5rem 1.25rem;display:flex;gap:.6rem;border-top:1px solid var(--border)}
+    .card-footer .btn{flex:1;justify-content:center;font-size:.8rem}
+
+    /* ── ALL REPOS SECTION ── */
+    .repos-section{padding:1.5rem 0 5rem}
+    .repos-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem}
+    .repo-count{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--muted)}
+    .search-box{display:flex;align-items:center;gap:.5rem;padding:.45rem .9rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;width:220px;transition:border-color .2s}
+    .search-box:focus-within{border-color:var(--border-hi)}
+    .search-box input{background:transparent;border:none;outline:none;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.85rem;width:100%}
+    .search-box input::placeholder{color:var(--muted)}
+
+    .repos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+    @media(max-width:480px){.repos-grid{grid-template-columns:1fr}}
+
+    .repo-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.65rem;box-shadow:var(--cshadow);transition:border-color .2s,transform .25s,box-shadow .25s;cursor:default}
+    .repo-card:hover{border-color:var(--border-hi);transform:translateY(-3px);box-shadow:var(--cshadow-hi)}
+    .repo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.92rem;color:var(--text)}
+    .repo-desc{font-size:.82rem;color:var(--muted);line-height:1.6;flex:1}
+    .repo-meta{display:flex;align-items:center;gap:.75rem;font-size:.74rem;color:var(--muted)}
+    .repo-lang{display:flex;align-items:center;gap:.3rem}
+    .lang-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+    .repo-footer{display:flex;justify-content:flex-end}
+
+    /* ── LANG COLORS ── */
+    .lang-Python{background:#3572A5}.lang-JavaScript{background:#f1e05a}.lang-TypeScript{background:#2b7489}
+    .lang-HTML{background:#e34c26}.lang-CSS{background:#563d7c}.lang-Jupyter{background:#DA5B0B}
+    .lang-Shell{background:#89e051}.lang-Other{background:#8f8f8f}
+
+    /* ── SKELETON CARDS ── */
+    .skel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.75rem}
+    .skel-line{height:14px}.skel-sm{height:10px;width:60%}.skel-lg{height:18px;width:80%}
+
+    /* ── EMPTY / ERROR ── */
+    .state-msg{text-align:center;padding:3rem 1.5rem;color:var(--muted);font-size:.9rem}
+    .state-msg h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--text);margin-bottom:.4rem}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Ashutosh<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><span class="theme-icon">☀️</span></button>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="projects.html" class="active">Projects</a>
+  <a href="skills.html">Skills</a>
+  <a href="resume.html">Resume</a>
+  <a href="contact.html">Contact</a>
+  <div class="mob-theme-row">
+    <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">☀️</span></button>
+    <span>Toggle theme</span>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+
+    <header class="page-hero fade-up">
+      <span class="section-label">Portfolio</span>
+      <h1>AI Projects <span style="color:var(--accent)">that ship.</span></h1>
+      <p>Production-grade AI systems with real evaluation metrics, live demos, and open-source code — plus everything else on GitHub.</p>
+    </header>
+
+    <!-- ── FEATURED PINNED PROJECTS ── -->
+    <section class="pin-section">
+      <span class="section-label">Featured · 3 projects</span>
+      <div class="pin-grid" id="pin-grid">
+
+        <!-- RAG Banking Chatbot (hero) -->
+        <div class="feat-card hero-card fade-up delay-1">
+          <div class="card-top">
+            <div class="card-icon" style="background:rgba(0,212,170,.12)">🏦</div>
+            <div class="card-badges"><span class="feat-badge">Featured</span><span class="live-badge">Live</span></div>
+          </div>
+          <div class="card-body">
+            <h2>AI Banking RAG Chatbot</h2>
+            <p>Enterprise-grade Retrieval-Augmented Generation chatbot for banking — KYC, fraud detection, loan advisory. Evaluated with RAGAS (faithfulness, answer relevance) and traced with LangSmith for full observability.</p>
+            <div class="stack-row">
+              <span class="stack-chip">FAISS</span><span class="stack-chip">Sentence Transformers</span>
+              <span class="stack-chip">Gemini API</span><span class="stack-chip">RAGAS</span>
+              <span class="stack-chip">LangSmith</span><span class="stack-chip">Streamlit</span>
+            </div>
+            <div class="metrics-row">
+              <div class="metric"><span class="mv">90%+</span><span class="mk">Retrieval accuracy</span></div>
+              <div class="metric"><span class="mv">10K+</span><span class="mk">Docs indexed</span></div>
+              <div class="metric"><span class="mv">&lt;2s</span><span class="mk">Avg latency</span></div>
+              <div class="metric"><span class="mv">RAGAS</span><span class="mk">Evaluated</span></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://generative-ai-banking-chatbot-gbjdmmgwpwwel3rerqsgru.streamlit.app/" target="_blank" class="btn btn-primary btn-sm">Live Demo ↗</a>
+            <a href="https://github.com/Ashusurya00/Generative-ai-banking-chatbot" target="_blank" class="btn btn-ghost btn-sm">GitHub</a>
+          </div>
+        </div>
+
+        <!-- Resume Analyzer -->
+        <div class="feat-card fade-up delay-2">
+          <div class="card-top">
+            <div class="card-icon" style="background:rgba(56,189,248,.12)">📄</div>
+            <div class="card-badges"><span class="feat-badge">Featured</span><span class="live-badge">Live</span></div>
+          </div>
+          <div class="card-body">
+            <h2>AI Resume Analyzer & Job Matcher</h2>
+            <p>AI-powered resume scoring with skill-gap analysis, job match scoring, and downloadable PDF reports with actionable recommendations.</p>
+            <div class="stack-row">
+              <span class="stack-chip">Python</span><span class="stack-chip">Streamlit</span>
+              <span class="stack-chip">OpenAI API</span><span class="stack-chip">pdfplumber</span>
+              <span class="stack-chip">reportlab</span><span class="stack-chip">NLP</span>
+            </div>
+            <div class="metrics-row">
+              <div class="metric"><span class="mv">PDF</span><span class="mk">Export</span></div>
+              <div class="metric"><span class="mv">LLM</span><span class="mk">Scoring</span></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://ai-resume-analyzer-95bnujjzjadh3m46hkhtar.streamlit.app/" target="_blank" class="btn btn-primary btn-sm">Live Demo ↗</a>
+            <a href="https://github.com/Ashusurya00/AI-resume-analyzer" target="_blank" class="btn btn-ghost btn-sm">GitHub</a>
+          </div>
+        </div>
+
+        <!-- Multi-Agent -->
+        <div class="feat-card fade-up delay-3">
+          <div class="card-top">
+            <div class="card-icon" style="background:rgba(168,85,247,.12)">🤖</div>
+            <div class="card-badges"><span class="feat-badge">Featured</span><span class="live-badge">Live</span></div>
+          </div>
+          <div class="card-body">
+            <h2>Multi-Agent AI System</h2>
+            <p>5-agent orchestration workflow for document understanding, task planning, and automated report generation using agent collaboration and persistent memory.</p>
+            <div class="stack-row">
+              <span class="stack-chip">CrewAI</span><span class="stack-chip">LangChain</span>
+              <span class="stack-chip">OpenAI API</span><span class="stack-chip">Streamlit</span>
+              <span class="stack-chip">Memory Systems</span>
+            </div>
+            <div class="metrics-row">
+              <div class="metric"><span class="mv">5</span><span class="mk">Agents</span></div>
+              <div class="metric"><span class="mv">65%</span><span class="mk">Faster</span></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://multi-agent-system-4hey2jhs6vzkewdumxu3uy.streamlit.app/" target="_blank" class="btn btn-primary btn-sm">Live Demo ↗</a>
+            <a href="https://github.com/Ashusurya00/Multi-Agent-System" target="_blank" class="btn btn-ghost btn-sm">GitHub</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── ALL GITHUB REPOS ── -->
+    <section class="repos-section">
+      <div class="repos-header">
+        <div>
+          <span class="section-label">All GitHub Repositories</span>
+          <p class="repo-count" id="repo-count">Loading from GitHub API…</p>
+        </div>
+        <div class="search-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="search-input" placeholder="Filter repos…" oninput="filterRepos()"/>
+        </div>
+      </div>
+      <div class="repos-grid" id="repos-grid">
+        <!-- Skeleton loaders -->
+        <div class="skel-card" id="sk1"><div class="skeleton skel-lg"></div><div class="skeleton skel-line"></div><div class="skeleton skel-sm"></div></div>
+        <div class="skel-card" id="sk2"><div class="skeleton skel-lg"></div><div class="skeleton skel-line"></div><div class="skeleton skel-sm"></div></div>
+        <div class="skel-card" id="sk3"><div class="skeleton skel-lg"></div><div class="skeleton skel-line"></div><div class="skeleton skel-sm"></div></div>
+        <div class="skel-card" id="sk4"><div class="skeleton skel-lg"></div><div class="skeleton skel-line"></div><div class="skeleton skel-sm"></div></div>
+        <div class="skel-card" id="sk5"><div class="skeleton skel-lg"></div><div class="skeleton skel-line"></div><div class="skeleton skel-sm"></div></div>
+        <div class="skel-card" id="sk6"><div class="skeleton skel-lg"></div><div class="skeleton skel-line"></div><div class="skeleton skel-sm"></div></div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer><p>Built by <a href="#">Ashutosh Suryawanshi</a> · Hyderabad, India · 2025</p></footer>
+
+<script src="theme.js"></script>
+<script>
+// Repos to skip from the "all" section (already pinned)
+const PINNED = ['generative-ai-banking-chatbot','ai-resume-analyzer','multi-agent-system'];
+
+// Generated descriptions for repos without one
+const DESCS = {
+  'ecommerce-clone':'Full-stack responsive e-commerce platform with product listings, cart, and Node.js backend.',
+  'insurance-fraud':'ML-based insurance fraud detection and claim analysis pipeline using Python and Scikit-learn.',
+  'portfolio':'Personal portfolio website built with HTML, CSS, and Tailwind CSS showcasing projects and skills.',
+};
+
+// Language color map
+const LANG_COLORS = {
+  Python:'#3572A5',JavaScript:'#f1e05a',TypeScript:'#2b7489',
+  HTML:'#e34c26',CSS:'#563d7c','Jupyter Notebook':'#DA5B0B',
+  Shell:'#89e051',
+};
+
+let allRepos = [];
+
+async function fetchRepos() {
+  try {
+    const res = await fetch('https://api.github.com/users/Ashusurya00/repos?per_page=100&sort=updated');
+    if (!res.ok) throw new Error('API error');
+    allRepos = await res.json();
+    // Filter out pinned and forks
+    allRepos = allRepos.filter(r => !PINNED.includes(r.name.toLowerCase()) && !r.fork);
+    renderRepos(allRepos);
+  } catch(e) {
+    // Fallback static list if API fails
+    allRepos = [
+      {name:'ecommerce-clone',description:null,language:'JavaScript',html_url:'https://github.com/Ashusurya00/ecommerce-clone',stargazers_count:0,updated_at:new Date().toISOString()},
+      {name:'insurance-fraud',description:null,language:'Python',html_url:'https://github.com/Ashusurya00/insurance-fraud',stargazers_count:0,updated_at:new Date().toISOString()},
+      {name:'portfolio',description:null,language:'HTML',html_url:'https://github.com/Ashusurya00/portfolio',stargazers_count:0,updated_at:new Date().toISOString()},
+    ];
+    renderRepos(allRepos);
+  }
+}
+
+function langColor(lang) {
+  return LANG_COLORS[lang] || '#8f8f8f';
+}
+
+function timeAgo(iso) {
+  const d = Math.floor((Date.now() - new Date(iso)) / 86400000);
+  if (d === 0) return 'today';
+  if (d === 1) return 'yesterday';
+  if (d < 30) return `${d}d ago`;
+  if (d < 365) return `${Math.floor(d/30)}mo ago`;
+  return `${Math.floor(d/365)}yr ago`;
+}
+
+function renderRepos(repos) {
+  const grid = document.getElementById('repos-grid');
+  document.getElementById('repo-count').textContent = `${repos.length} public repositories`;
+
+  if (!repos.length) {
+    grid.innerHTML = '<div class="state-msg"><h3>No repos found</h3><p>Try a different search term.</p></div>';
+    return;
+  }
+
+  grid.innerHTML = repos.map(r => {
+    const desc = r.description || DESCS[r.name.toLowerCase()] || 'A project by Ashutosh Suryawanshi.';
+    const lang = r.language || 'Other';
+    const color = langColor(lang);
+    const updated = timeAgo(r.updated_at);
+    return `
+    <div class="repo-card fade-in">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem">
+        <span class="repo-name">${r.name.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</span>
+        ${r.stargazers_count > 0 ? `<span style="font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:.2rem;white-space:nowrap">⭐ ${r.stargazers_count}</span>` : ''}
+      </div>
+      <p class="repo-desc">${desc}</p>
+      <div class="repo-meta">
+        <span class="repo-lang"><span class="lang-dot" style="background:${color}"></span>${lang}</span>
+        <span>${updated}</span>
+      </div>
+      <div class="repo-footer">
+        <a href="${r.html_url}" target="_blank" class="btn btn-ghost btn-sm">GitHub ↗</a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterRepos() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const filtered = allRepos.filter(r =>
+    r.name.toLowerCase().includes(q) ||
+    (r.description || '').toLowerCase().includes(q) ||
+    (r.language || '').toLowerCase().includes(q)
+  );
+  renderRepos(filtered);
+}
+
+fetchRepos();
+</script>
+</body>
+</html>
